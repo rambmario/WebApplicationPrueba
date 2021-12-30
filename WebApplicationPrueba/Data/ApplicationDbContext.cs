@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using AplicacionPrueba.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,7 @@ namespace WebApplicationPrueba.Data
             : base(options)
         {
         }
+
+        public DbSet<Zapato> Zapatos { get; set; }
     }
 }

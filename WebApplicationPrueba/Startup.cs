@@ -31,10 +31,6 @@ namespace WebApplicationPrueba
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            
-            services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(
-                Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
