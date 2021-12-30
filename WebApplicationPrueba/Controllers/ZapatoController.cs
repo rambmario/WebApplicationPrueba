@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AplicacionPrueba.Models;
 using WebApplicationPrueba.Data;
+using System.Diagnostics;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace WebApplicationPrueba.Controllers
 {
     public class ZapatoController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ZapatoController(ApplicationDbContext context)
+        public ZapatoController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
         }
 
         // GET: Zapato
@@ -56,12 +61,28 @@ namespace WebApplicationPrueba.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Marca,Modelo,Color,Talle,Tipo,Imagen,Descripcion,Precio,Stock")] Zapato zapato)
         {
+
             if (ModelState.IsValid)
             {
+
+                //Save image to wwwroot/image
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(zapato.Imagen);
+                string extension = Path.GetExtension(zapato.Imagen);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath + "/images/", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    //await ImageFile.CopyToAsync(fileStream);
+                }
+
                 _context.Add(zapato);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+
+
             return View(zapato);
         }
 
