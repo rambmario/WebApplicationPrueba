@@ -15,8 +15,7 @@ namespace WebApplicationPrueba.Data
         {
         }
 
-        public DbSet<Zapato> Zapatos { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
 
-        public DbSet<WebApplicationPrueba.Models.Cliente> Cliente { get; set; }
     }
 }

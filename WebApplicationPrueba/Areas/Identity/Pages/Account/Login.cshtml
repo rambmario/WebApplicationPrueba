@@ -10,7 +10,7 @@
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h4>Use a local account to log in.</h4>
+                <h4>Usar una cuenta para loguear.</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
@@ -27,7 +27,7 @@
                     <div class="checkbox">
                         <label asp-for="Input.RememberMe">
                             <input asp-for="Input.RememberMe" />
-                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            Recordarme
                         </label>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrar un nuevo usuario</a>
                     </p>
                     <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Reenviar correo de confirmación</a>
                     </p>
                 </div>
             </form>

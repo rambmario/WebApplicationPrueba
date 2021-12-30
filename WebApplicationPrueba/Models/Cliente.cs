@@ -20,6 +20,7 @@ namespace WebApplicationPrueba.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Display(Name = "Teléfono")]
         public string Telefono { get; set; }
 
 
