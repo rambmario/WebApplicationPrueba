@@ -9,25 +9,29 @@ namespace AplicacionPrueba.Models
 
         [Required]
         [StringLength(50)]
-        public string? Marca { get; set; }
+        public string Marca { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string? Modelo { get; set; }
+        public string Modelo { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string? Color { get; set; }
+        public string Color { get; set; }
 
         [StringLength(50)]
-        public string? Talle { get; set; }
+        public string Talle { get; set; }
 
         [StringLength(50)]
-        public string? Tipo { get; set; }
+        public string Tipo { get; set; }
 
-        public string? Imagen { get; set; }
-        public string? Descripcion { get; set; }
-        public decimal? Precio { get; set; }
+        public string Imagen { get; set; }
+
+        public string Descripcion { get; set; }
+
+        [Required]
+        [DataType(DataType.Currency)]
+        public decimal Precio { get; set; }
         public int? Stock { get; set; }
     }
 }
